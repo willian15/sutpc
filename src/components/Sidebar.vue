@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="sidebar">
-      <el-menu class="el-menu-vertical" @open="handleOpen" @close="handleClose" background-color="#324157" text-color="#fff" active-text-color="#ffd04b">
+      <el-menu class="el-menu-vertical"  @open="handleOpen" @close="handleClose" background-color="#324157" text-color="#fff" active-text-color="#ffd04b">
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span>系统首页</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="1-1" :class="{on: '/home/vMain'===$route.path}" @click="goTo('/home/vMain')">表格信息</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
+            <el-menu-item index="/home/vMain" :class="{on: '/home/vMain'===$route.path}" @click="goTo('/home/vMain')">表格信息</el-menu-item>
+            <el-menu-item index="/home/vMain1">选项2</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-menu-item index="2">
@@ -30,10 +30,6 @@
       <router-view></router-view>
     </div>
   </div>
-
-
-
-
 </template>
 
 <script type="text/ecmascript-6">
@@ -41,6 +37,12 @@
       methods: {
         goTo(path) {
           this.$router.replace(path)
+        },
+        handleOpen(key, keyPath) {
+          console.log(key, keyPath);
+        },
+        handleClose(key, keyPath) {
+          console.log(key, keyPath);
         }
       }
     }
