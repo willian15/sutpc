@@ -24,20 +24,20 @@
         }]
       }
     },
-
     methods: {
-
       //发送ajax，请求后端数据
       getEmpsList() {
-        this.axios.get('/emp/${id}')
+        this.$axios.get('/emp/1')
           .then(response=>{
-            const empsList = response.data;
-            this.lastName = empsList.lastName;
+//            console.log(response.data.lastName)
+            alert(response.data.lastName)
+//            const empsList = response.data;
+//            this.lastName = empsList.lastName;
           }).catch(response=>{
           alert("请求失败")
         })
       },
-
+      //element-ui
       toggleSelection(rows) {
         if (rows) {
           rows.forEach(row => {
@@ -50,6 +50,9 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       }
+    },
+    mounted() {
+      this.getEmpsList();
     }
   }
 </script>
