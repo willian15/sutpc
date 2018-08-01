@@ -58,5 +58,11 @@
 </script>
 
 <style>
-
+  .context {
+    position: absolute;
+    left: 250px;
+    right: 0;
+    top: 90px;
+    bottom: 0;
+  }
 </style>

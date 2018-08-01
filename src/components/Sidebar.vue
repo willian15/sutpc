@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="side">
     <div class="sidebar">
       <el-menu class="el-menu-vertical"  @open="handleOpen" @close="handleClose" background-color="#324157" text-color="#fff" active-text-color="#ffd04b">
         <el-submenu index="1">
@@ -12,21 +12,24 @@
             <el-menu-item index="/home/vMain1">选项2</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
+
         <el-menu-item index="2">
           <i class="el-icon-menu"></i>
-          <span slot="title">系统管理</span>
+          <span slot="title" :class="{on: '/home/vEcharts'===$route.path}" @click="goTo('/home/vEcharts')">报表工具</span>
         </el-menu-item>
+
         <el-menu-item index="3">
           <i class="el-icon-document"></i>
           <span slot="title">用户权限</span>
         </el-menu-item>
+
         <el-menu-item index="4">
           <i class="el-icon-setting"></i>
           <span slot="title">系统设置</span>
         </el-menu-item>
       </el-menu>
     </div>
-    <div class="context">
+    <div class="content">
       <router-view></router-view>
     </div>
   </div>
@@ -60,11 +63,11 @@
   .sidebar > ul{
     height: 100%;
   }
-  .context{
+  .content{
     position: absolute;
-    left: 250px;
+    left: 210px;
     right: 0;
-    top: 90px;
+    top: 91px;
     bottom: 0;
   }
 </style>
