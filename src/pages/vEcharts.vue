@@ -1,24 +1,17 @@
 <template>
   <div class="chart">
     <el-row>
-
-        <!--<el-upload  class="upload" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove"
-                   :before-remove="beforeRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
-          <el-button size="small" type="primary">上传数据</el-button>
-        </el-upload>-->
-
-      <el-col :span="8"><div class="grid-content bg-purple"><el-upload  class="upload" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove"
-                                                                        :before-remove="beforeRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
-        <el-button size="small" type="primary">上传数据</el-button>
-      </el-upload></div></el-col>
-      <el-col :span="8"><div class="grid-content bg-purple-light"><el-button class="btn" size="small" type="success">成功按钮</el-button></div></el-col>
-      <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
-
+      <el-col :span="8">
+        <div class="grid-content bg-purple">
+          <el-upload class="upload" action="/upload/singlefile" accept=".xlsx , .xls" :on-preview="handlePreview" :on-remove="handleRemove"
+                     :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList">
+            <el-button size="small" type="primary">上传数据</el-button>
+          </el-upload>
+        </div>
+      </el-col>
     </el-row>
-
     <div id="myChart" :style="{width: '900px', height: '600px'}"></div>
   </div>
-
 </template>
 /**
 *@author ZhangJincheng
@@ -28,7 +21,8 @@
     export default {
       data() {
         return {
-          fileList: []
+          fileList:[]
+//          file: ''
         };
       },
       methods: {
@@ -116,7 +110,7 @@
           console.log(file);
         },
         handleExceed(files, fileList) {
-          this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+          this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
         },
         beforeRemove(file, fileList) {
           return this.$confirm(`确定移除 ${ file.name }？`);
@@ -142,14 +136,6 @@
   .btn{
     position: absolute;
     top:10px;
-  }
-  .bg-purple {
-    background: #d3dce6;
-    height: 50px;
-  }
-  .bg-purple-light {
-    background: #e5e9f2;
-    height: 50px;
   }
   .grid-content {
     border-radius: 4px;

@@ -69,5 +69,6 @@
     right: 0;
     top: 91px;
     bottom: 0;
+    overflow-y: scroll;
   }
 </style>
